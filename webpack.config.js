@@ -48,8 +48,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: "./index.html", minify: { collapseWhitespace: !isDev } }),
     new CleanWebpackPlugin(),
-    //new CopyWebpackPlugin({ patterns: [{ from: "./assets/favicon.ico" }] }),
-    new CopyWebpackPlugin({ patterns: [{ from: "./img", to: "img" }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: "./img/bubble1.png", to: "img/bubble1.png" }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: "./img/bubble2.png", to: "img/bubble2.png" }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: "./img/sweem-flipped.png", to: "img/sweem-flipped.png" }] }),
+    new CopyWebpackPlugin({ patterns: [{ from: "./img/sweem.png", to: "img/sweem.png" }] }),
     new CopyWebpackPlugin({ patterns: [{ from: "./sound", to: "sound" }] }),
     new MiniCssExtractPlugin({ filename: filename(`css`) })
   ],

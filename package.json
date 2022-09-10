@@ -5,7 +5,7 @@
   "description": "nothing special",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "publish": "cross-env NODE_ENV=production webpack --mode production",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
     "start": "cross-env NODE_ENV=development webpack-dev-server --mode development"
   },
   "keywords": [
