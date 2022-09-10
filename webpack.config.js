@@ -34,7 +34,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: filename(`js`),
-    publicPath: "/fish-game/"
+    publicPath: "."
   },
   resolve: {
     extensions: [".js", ".jsx", ".json"]
