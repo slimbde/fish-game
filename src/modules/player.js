@@ -18,9 +18,9 @@ export class Player {
     this.height = this.spriteHeight * this.scale
     this.radius = this.width / 2.5
     this.imgLeft = new Image()
-    this.imgLeft.src = "../img/sweem.png"
+    this.imgLeft.src = "img/sweem.png"
     this.imgRight = new Image()
-    this.imgRight.src = "../img/sweem-flipped.png"
+    this.imgRight.src = "img/sweem-flipped.png"
   }
 
   getFramePosition(frameNum) {

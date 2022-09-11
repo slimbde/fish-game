@@ -9,10 +9,10 @@ class Bubble {
     this.speed = Math.random() * 5 + 1
     this.distance = 0
     this.dispose = false
-    this.sound = new Audio(`../sound/bubble${Math.random() < 0.5 ? 1 : 2}.mp3`)
-    this.sound.volume = 0.5
+    this.sound = new Audio(`sound/bubble${Math.random() < 0.5 ? 1 : 2}.mp3`)
+    this.sound.volume = 0.1
     this.img = new Image()
-    this.img.src = Math.random() < 0.5 ? "../img/bubble1.png" : "../img/bubble2.png"
+    this.img.src = Math.random() < 0.5 ? "img/bubble1.png" : "img/bubble2.png"
     this.scale = 0.15
     this.spriteWidth = 512
     this.spriteHeight = 512

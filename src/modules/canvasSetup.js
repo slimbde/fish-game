@@ -30,21 +30,6 @@ export const drawScore = (playerName, score, endGameRequest) => {
     ctx.fillStyle = "#ffffff85"
     ctx.fillText("COLLECT BUBBLES", canvas.width / 5, 100)
   }
-
-  // draw local storage
-  const json = localStorage.getItem("scores")
-  if (!!json) {
-    ctx.font = "15px Georgia"
-    ctx.fillStyle = "white"
-    let y = 80
-    ctx.fillText("RATING:", 10, y)
-    ctx.fillStyle = "yellow"
-    const scores = JSON.parse(json)
-    Object.keys(scores).forEach(name => {
-      y += 17
-      ctx.fillText(`${name}: ${scores[name]}`, 10, y)
-    })
-  }
 }
 
 
@@ -71,6 +56,23 @@ export const drawNewGameRequest = (newGameCallback) => {
   ctx.font = `${canvas.width / 30}px Georgia`
   ctx.fillText("to begin a new game", canvas.width / 2, canvas.height / 2 + 25)
   ctx.fillText("click the screen", canvas.width / 2, canvas.height / 2 + 47)
+  ctx.closePath()
+
+  // draw local storage
+  ctx.beginPath()
+  const json = localStorage.getItem("scores")
+  if (!!json) {
+    ctx.font = "15px Georgia"
+    ctx.fillStyle = "white"
+    let y = 50
+    ctx.fillText("TOP SCORES:", 20, y)
+    ctx.fillStyle = "yellow"
+    const scores = JSON.parse(json)
+    Object.keys(scores).forEach(name => {
+      y += 18
+      ctx.fillText(`${name}: ${scores[name]}`, 20, y)
+    })
+  }
   ctx.closePath()
 
   canvas.onclick = () => newGameCallback(canvas)

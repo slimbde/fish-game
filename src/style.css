@@ -9,14 +9,15 @@ body {
   height: 100vh;
   display: flex;
   background-color: gray;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 3vh;
 }
 
 #canvas {
   width: 700px;
   height: 500px;
-  background-image: url("./img/background.gif");
+  background-image: url("img/background.gif");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
