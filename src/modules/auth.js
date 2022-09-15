@@ -5,8 +5,8 @@ const logBtn = document.getElementById("signIn")
 const authResult = document.getElementById("auth-result")
 
 
-export const api = !!process.env.NODE_ENV ? "/api" : "http://slimbde.atwebpages.com"
-
+// export const api = "/api"      // debug-local-proxy-api
+export const api = "http://slimbde.atwebpages.com"
 
 
 const checkInputs = () => {

@@ -44,20 +44,20 @@ module.exports = {
     port: 2500,
     contentBase: path.resolve(__dirname, "dist"),
     compress: true,
-    proxy: {
-      '/api': {
-        target: {
-          host: "slimbde.atwebpages.com",
-          protocol: 'http:',
-          port: 80
-        },
-        changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
+    //proxy: {
+    //  '/api': {
+    //    target: {
+    //      host: "slimbde.atwebpages.com",
+    //      protocol: 'http:',
+    //      port: 80
+    //    },
+    //    changeOrigin: true,
+    //    secure: false,
+    //    pathRewrite: {
+    //      '^/api': ''
+    //    }
+    //  }
+    //}
     //hot: isDev, - this should be disabled. Otherwise html page doesn't refresh
   },
   plugins: [
