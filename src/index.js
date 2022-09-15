@@ -29,55 +29,62 @@ const animate = (token) => {
 
 
 const newGameCallback = (canvas) => {
-  canvas.onclick = null
+  const authForm = document.getElementById("auth-form")
+  authForm.style.visibility = "visible"
 
-  while (playerName.length < 1) {
-    playerName = prompt("Please introduce yourself...")
-
-    if (playerName === null) {
-      canvas.onclick = () => newGameCallback(canvas)
-      playerName = ""
-      break
-    }
+  canvas.onclick = () => {
+    const visibility = authForm.style.visibility
+    authForm.style.visibility = visibility === "hidden" ? "visible" : "hidden"
   }
 
-  if (!!playerName) {
-    canvas.onclick = (e) => {
-      //console.log(e.offsetX, e.offsetY)
-      if (e.offsetX > 585 && e.offsetY > 25 && e.offsetY < 50) {
-        if (confirm("really end this game?") === true) {
 
-          let scores = {}
-          let json = localStorage.getItem("scores")
-          if (!!json) scores = JSON.parse(json)
-          scores[playerName] = score
-          localStorage.setItem("scores", JSON.stringify(scores))
+  //while (playerName.length < 1) {
+  //  playerName = prompt("Please introduce yourself...")
 
-          bgSound.pause()
-          token.abort()
-          token = new AbortController()
-          gameFrame = 0
-          score = 0
-          fish = new Player()
-          playerName = ""
-          drawNewGameRequest(newGameCallback)
-        }
-      }
-    }
-    canvas.onmousemove = (e) => {
-      if (e.offsetX > 585 && e.offsetY > 25 && e.offsetY < 50) {
-        canvas.style.cursor = "pointer"
-        endGameRequest = true
-      }
-      else {
-        canvas.style.cursor = "default"
-        endGameRequest = false
-      }
-    }
+  //  if (playerName === null) {
+  //    canvas.onclick = () => newGameCallback(canvas)
+  //    playerName = ""
+  //    break
+  //  }
+  //}
 
-    bgSound.play()
-    animate(token)
-  }
+  //if (!!playerName) {
+  //  canvas.onclick = (e) => {
+  //    //console.log(e.offsetX, e.offsetY)
+  //    if (e.offsetX > 585 && e.offsetY > 25 && e.offsetY < 50) {
+  //      if (confirm("really end this game?") === true) {
+
+  //        let scores = {}
+  //        let json = localStorage.getItem("scores")
+  //        if (!!json) scores = JSON.parse(json)
+  //        scores[playerName] = score
+  //        localStorage.setItem("scores", JSON.stringify(scores))
+
+  //        bgSound.pause()
+  //        token.abort()
+  //        token = new AbortController()
+  //        gameFrame = 0
+  //        score = 0
+  //        fish = new Player()
+  //        playerName = ""
+  //        drawNewGameRequest(newGameCallback)
+  //      }
+  //    }
+  //  }
+  //  canvas.onmousemove = (e) => {
+  //    if (e.offsetX > 585 && e.offsetY > 25 && e.offsetY < 50) {
+  //      canvas.style.cursor = "pointer"
+  //      endGameRequest = true
+  //    }
+  //    else {
+  //      canvas.style.cursor = "default"
+  //      endGameRequest = false
+  //    }
+  //  }
+
+  //  bgSound.play()
+  //  animate(token)
+  //}
 }
 
 

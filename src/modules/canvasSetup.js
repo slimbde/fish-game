@@ -64,7 +64,7 @@ export const drawNewGameRequest = (newGameCallback) => {
   if (!!json) {
     ctx.font = "15px Georgia"
     ctx.fillStyle = "white"
-    let y = 50
+    let y = 40
     ctx.fillText("TOP SCORES:", 20, y)
     ctx.fillStyle = "yellow"
     const scores = JSON.parse(json)
