@@ -11,7 +11,7 @@ let token = new AbortController()
 let fish = new Player()
 let endGameRequest = false
 
-const bgSound = new Audio("sound/underwater.mp3")
+const bgSound = new Audio("sound/underwater.wav")
 bgSound.volume = 0.5
 bgSound.loop = true
 
