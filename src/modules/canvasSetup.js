@@ -1,3 +1,6 @@
+import { responseHandler, api } from "./auth.js"
+
+
 export const canvas = document.getElementById("canvas")
 export const ctx = canvas.getContext("2d")
 canvas.width = 700
@@ -54,26 +57,32 @@ export const drawNewGameRequest = (newGameCallback) => {
   ctx.beginPath()
   ctx.fillStyle = "black"
   ctx.font = `${canvas.width / 30}px Georgia`
-  ctx.fillText("to begin a new game", canvas.width / 2, canvas.height / 2 + 25)
-  ctx.fillText("click the screen", canvas.width / 2, canvas.height / 2 + 47)
+  ctx.fillText("Для начала новой игры", canvas.width / 2, canvas.height / 2 + 25)
+  ctx.fillText("кликните игровой экран", canvas.width / 2, canvas.height / 2 + 47)
   ctx.closePath()
 
-  // draw local storage
-  ctx.beginPath()
-  const json = localStorage.getItem("scores")
-  if (!!json) {
-    ctx.font = "15px Georgia"
-    ctx.fillStyle = "white"
-    let y = 40
-    ctx.fillText("TOP SCORES:", 20, y)
-    ctx.fillStyle = "yellow"
-    const scores = JSON.parse(json)
-    Object.keys(scores).forEach(name => {
-      y += 18
-      ctx.fillText(`${name}: ${scores[name]}`, 20, y)
+  // draw scores
+  fetch(`${api}/php-api/users/fish-get-scores`)
+    .then(responseHandler)
+    .then(scores => {
+      if (Array.isArray(scores)) {
+        ctx.beginPath()
+        ctx.font = "15px Georgia"
+        ctx.fillStyle = "white"
+        let y = 40
+        ctx.fillText("TOP SCORES:", 20, y)
+        ctx.fillStyle = "yellow"
+
+        scores.forEach(one => {
+          y += 18
+          ctx.fillText(`${one.Login}: ${one.Scores}`, 20, y)
+        })
+        ctx.closePath()
+      }
     })
-  }
-  ctx.closePath()
+    .catch(err => {
+      if (!err.message.toLowerCase().includes("not found")) console.error(err.message)
+    })
 
   canvas.onclick = () => newGameCallback(canvas)
 }

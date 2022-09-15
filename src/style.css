@@ -65,6 +65,7 @@ body {
 }
 
 #auth-result {
-  color: red;
+  color: yellow;
   font-size: .8rem;
+  text-shadow: 0 0 2px yellow;
 }
